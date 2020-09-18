@@ -1,14 +1,17 @@
-'''
-testing testing 1 2 3 
 
+'''
 Your function should take in a single parameter (a string `word`)
 Your function should return a count of how many occurences of ***"th"*** occur within `word`. Case matters.
 Your function must utilize recursion. It cannot contain any loops.
 '''
 def count_th(word):
-    if len(word) > 1 and word[0] == 't' and word[1] == 'h':
-        return 1 + count_th(word[2:])
-    elif len(word) > 2:
-        return count_th(word[1:])
-    else:
+
+    # "th" wont exist if word is less than 2 characters long
+    if len(word) < 2:
         return 0
+
+    count = 0
+    if word[0:2] == "th":
+        count += 1
+
+    return count + count_th(word[1:])
